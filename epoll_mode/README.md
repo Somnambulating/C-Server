@@ -1,11 +1,9 @@
                      epoll_mode
-=====================================================
 
 This is a simple epoll() implementation for linux designer to use.
 
 
-=====================================================
-Description
+> Description
 
 As man-pages describe that, epoll-  I/O event notification facility.
 The "epoll_mode" is a simple implement for web server
@@ -23,10 +21,9 @@ The additional classes are listed as follow:
     4. TCPSocket - A recieve and send buffering TCPSocket proxy,
         Provides recieve and disconnect callbacks.
 
-=====================================================
-Dependencies
+> Dependencies
 
-<sys/epoll.h>
-g++ std=c++11
-gdb -used for debug
+<sys/epoll.h> <br>
+g++ std=c++11 <br>
+gdb -used for debug <br>
 
