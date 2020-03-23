@@ -25,7 +25,7 @@
 #include<thread>
 #include<vector>
 #include<memory>
-
+#include<sys/epoll.h>
 
 /*  After the tcp connection has established, eventManager listens and 
  *  implement requests from client.
@@ -33,6 +33,7 @@
  *  Watch on sockets and execute functions to deal with requests.
  * */
 class eventManager{
+public:
 
 };
 

@@ -17,10 +17,4 @@
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS.
  *
  * */
-
-#ifndef EPOLL_MODE_TCPSOCKET_H_
-#define EPOLL_MODE_TCPSOCKET_H_
-
-#include"tcp_address.h"
-
-#endif
+#include"iobuffer.h"

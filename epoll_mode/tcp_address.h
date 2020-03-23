@@ -18,13 +18,8 @@
  *
  * */
 
-#ifndef EPOLL_MODE_FUTURE_H_
-#define EPOLL_MODE_FUTURE_H_
-
-
-
-
-
+#ifndef EPOLL_MODE_TCP_ADDRESS_H_
+#define EPOLL_MODE_TCPSOCKET_H_
 
 
 #endif
