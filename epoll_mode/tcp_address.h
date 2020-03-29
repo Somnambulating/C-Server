@@ -21,5 +21,32 @@
 #ifndef EPOLL_MODE_TCP_ADDRESS_H_
 #define EPOLL_MODE_TCPSOCKET_H_
 
+#include<sys/socket.h>
+#include<arpa/inet.h>
+
+class address{
+private:
+    //  struct sockaddr_in defined in netinet/in.h
+    /* Structure describing an Internet socket address.  */
+    struct sockaddr_in serverAddress;
+
+public:
+    explicit address(int port){
+        
+        serverAddress.sin_family = AF_INET;
+    //  htons, htonl are inclued in netinet/in.h    
+/* Functions to convert between host and network byte order.
+
+   Please note that these functions normally take `unsigned long int' or
+   `unsigned short int' values as arguments and also return them.  But
+   this was a short-sighted decision since on different systems the types
+   may have different representations but the values are always the same.
+*/
+        serverAddress.sin_port = htons(port);
+        serverAddress.sin_addr.s_addr = htonl(INADDR_ANY);
+    }
+    int getPort() const;      //  Return serverAddress.port
+    long getAddress() const;        //  Return serverAddress.sin_addr.s_addr
+};
 
 #endif
