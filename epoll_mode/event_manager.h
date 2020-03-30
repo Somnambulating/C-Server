@@ -26,6 +26,7 @@
 #include<vector>
 #include<memory>
 #include<sys/epoll.h>
+#include"tcp_socket.h"
 
 /*  After the tcp connection has established, eventManager listens and 
  *  implement requests from client.
@@ -33,8 +34,39 @@
  *  Watch on sockets and execute functions to deal with requests.
  * */
 class eventManager{
+private:
+    struct epoll_event _event;
+    struct epoll_event *_waitEvent;
+    Socket _socket;
+    int _epollSize;
+    int _epollFd;
+    int _maxEvents;
 public:
+    explicit eventManager(){
+        _waitEvent = NULL;
+        _epollSize = 0;
+        _epollFd = 0;
+        _maxEvents = 0;
+    }
 
+    virtual ~eventManager(){
+        delete _waitEvent;
+    }
+
+    /*Creates an epoll instance.*/
+    int epoll_create(int _size);
+
+    /*Manipulate an epoll instance "epfd". */
+    int epoll_ctl();
+
+    /*Wait for events on an epoll instance "epfd". */
+    int epoll_wait();
+
+    /*Get epoll Size*/
+    int getEpollSize() const;
+
+    /*Get Maxnium num of epoll events.*/
+    int getMaxEvents() const;
 };
 
 

@@ -20,10 +20,14 @@
 
 #include"tcp_address.h"
 
-int address::getPort() const{
+int Address::getPort() const{
     return ntohs(serverAddress.sin_port);
 }
 
-long address::getAddress() const{
+long Address::getAddress() const{
     return ntohl(serverAddress.sin_addr.s_addr);
+}
+
+void Address::resetPort(int port){
+    serverAddress.sin_port = htons(port);
 }

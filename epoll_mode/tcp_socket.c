@@ -18,3 +18,23 @@
  *
  * */
 #include"tcp_socket.h"
+
+int Socket::socket(){
+    conncFd = ::socket(AF_INET, SOCK_STREAM, 0);
+    return conncFd;
+}
+
+int Socket::bind(){
+    return ::bind(conncFd, (struct sockaddr*)&address.serverAddress, sizeof(address.serverAddress));
+}
+
+
+int Socket::listen(int maxFd){
+    _maxFd = maxFd;
+    return ::listen(conncFd, maxFd);
+}
+
+
+int Socket::getBacklog() const{
+    return _maxFd;
+}

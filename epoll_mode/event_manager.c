@@ -18,3 +18,23 @@
  *
  * */
 #include"event_manager.h"
+
+int eventManager::epoll_create(int _size){
+    _epollSize = _size;
+    _epollFd = ::epoll_create(_size);
+    return _epollFd;
+}
+
+int eventManager::epoll_ctl(){
+
+}
+
+int eventManager::epoll_wait(){}
+
+int eventManager::getEpollSize() const{
+    return _epollSize;
+}
+
+int eventManager::getMaxEvents() const{
+    return _maxEvents;
+}

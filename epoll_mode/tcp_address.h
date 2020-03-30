@@ -24,16 +24,18 @@
 #include<sys/socket.h>
 #include<arpa/inet.h>
 
-class address{
-private:
+class Address{
+public:
     //  struct sockaddr_in defined in netinet/in.h
-    /* Structure describing an Internet socket address.  */
+    /* Structure describing an Internet socket Address.  */
     struct sockaddr_in serverAddress;
 
 public:
-    explicit address(int port){
-        
+    explicit Address(){
         serverAddress.sin_family = AF_INET;
+        serverAddress.sin_addr.s_addr = htonl(INADDR_ANY);
+    }
+    explicit Address(int port){
     //  htons, htonl are inclued in netinet/in.h    
 /* Functions to convert between host and network byte order.
 
@@ -42,11 +44,13 @@ public:
    this was a short-sighted decision since on different systems the types
    may have different representations but the values are always the same.
 */
+        serverAddress.sin_family = AF_INET;
         serverAddress.sin_port = htons(port);
         serverAddress.sin_addr.s_addr = htonl(INADDR_ANY);
     }
     int getPort() const;      //  Return serverAddress.port
     long getAddress() const;        //  Return serverAddress.sin_addr.s_addr
+    void resetPort(int port);        //  Reset the port
 };
 
 #endif
