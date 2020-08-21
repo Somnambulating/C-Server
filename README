@@ -1,0 +1,13 @@
+Somnambulating Server
+====================
+
+There are several modes for Netword-server, including 
+epoll, thread pool and more modes are constructed by c++.
+
+There are various files in the Documents/ subdirectory,
+several of them using the different thinking in design.
+
+Please read the README first, and to make the decision in
+choosing the most appropriate server-mode.
+
+Some tools were designed by muduo repository.
